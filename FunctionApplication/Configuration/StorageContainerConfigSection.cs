@@ -14,5 +14,7 @@ namespace FunctionApplication.Configuration
 
         public string Container { get; set; }
 
+        public bool EnableSoftDelete { get; set; }
+
     }
 }
