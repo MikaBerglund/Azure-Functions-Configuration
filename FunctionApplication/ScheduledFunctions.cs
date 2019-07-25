@@ -9,18 +9,18 @@ namespace FunctionApplication
 {
     public class ScheduledFunctions
     {
-        public ScheduledFunctions(MyAppConfigSection myAppConfig)
+        public ScheduledFunctions(AppSettingsRootConfig rootConfig)
         {
-            this.MyAppConfig = myAppConfig;
+            this.AppConfig = rootConfig;
         }
 
-        private MyAppConfigSection MyAppConfig;
+        private AppSettingsRootConfig AppConfig;
 
 
         [FunctionName(nameof(Scheduled1))]
         public async Task Scheduled1([TimerTrigger("*/10 * * * * *")]TimerInfo timer)
         {
-            var containers = this.MyAppConfig.Containers;
+            var containers = this.AppConfig.MyApp.Containers;
 
         }
     }

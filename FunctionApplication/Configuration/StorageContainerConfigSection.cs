@@ -10,10 +10,19 @@ namespace FunctionApplication.Configuration
     public class StorageContainerConfigSection
     {
 
+        /// <summary>
+        /// The full connection string to the storage account.
+        /// </summary>
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// The name of the container.
+        /// </summary>
         public string Container { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable soft deletes in case the application deletes blobs.
+        /// </summary>
         public bool EnableSoftDelete { get; set; }
 
     }
