@@ -1,5 +1,6 @@
 ﻿using FunctionApplication.Configuration;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,10 +29,11 @@ namespace FunctionApplication
         /// A timer triggered function that uses injected configuration information.
         /// </summary>
         [FunctionName(nameof(Scheduled1))]
-        public async Task Scheduled1([TimerTrigger("*/10 * * * * *")]TimerInfo timer)
+        public async Task Scheduled1([TimerTrigger("*/10 * * * * *")]TimerInfo timer, ILogger logger)
         {
             foreach(var container in this.AppConfig.MyApp.Containers)
             {
+                logger.LogInformation($"Container: {container.Container}");
                 await Task.Yield();
             }
         }
